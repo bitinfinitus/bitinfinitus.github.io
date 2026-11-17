@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>bitinfinitus · Do bit ao infinito</title>
+<meta name="description" content="Desenvolvimento de software sob medida: sistemas web, apps e APIs. Começamos simples, entregamos cedo e fazemos o software crescer com o seu negócio.">
+<meta name="theme-color" content="#3442D9">
+<meta property="og:type" content="website">
+<meta property="og:title" content="bitinfinitus · Do bit ao infinito">
+<meta property="og:description" content="Software sob medida: sistemas web, apps e APIs.">
+<meta property="og:image" content="assets/og-image-1200x630.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@300;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: página única — cabeçalho fixo, abertura com o símbolo desenhado na grade, serviços, método, nome, contato. */
+:root {
+  --paper: #F3F4F7;
+  --surface: #FFFFFF;
+  --ink: #11152B;
+  --muted: #5B6178;
+  --line: #DCDFE8;
+  --grid: #E1E4EE;
+  --cobalt: #3442D9;
+  --band: #3442D9;
+  --on-band: #FFFFFF;
+  --signal: #F08A3C;
+  --on-signal: #11152B;
+
+  --f-display: "Sora", "Segoe UI", system-ui, sans-serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --max: 1160px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0B0E1C; --surface: #12162B; --ink: #E9EBF3; --muted: #9AA0B8; --line: #262B45;
+    --grid: #181C34; --cobalt: #8790FF; --band: #2A35BF; --on-band: #FFFFFF; --signal: #F5A060; --on-signal: #11152B;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0B0E1C; --surface: #12162B; --ink: #E9EBF3; --muted: #9AA0B8; --line: #262B45;
+  --grid: #181C34; --cobalt: #8790FF; --band: #2A35BF; --on-band: #FFFFFF; --signal: #F5A060; --on-signal: #11152B;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--f-body); font-size: 17px; line-height: 1.6; }
+h1, h2, h3 { font-family: var(--f-display); margin: 0; letter-spacing: -0.025em; text-wrap: balance; }
+p { margin: 0; }
+a { color: inherit; }
+.inner { max-width: var(--max); margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.eyebrow { font-family: var(--f-mono); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+section { padding-block: clamp(64px, 10vw, 120px); }
+.sec-head { display: grid; gap: 12px; margin-bottom: 48px; max-width: 640px; }
+.sec-head h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.1; }
+.sec-head p { color: var(--muted); font-size: 18px; }
+
+.btn { display: inline-flex; align-items: center; gap: 10px; font: 600 16px var(--f-body); text-decoration: none; padding: 14px 22px; border-radius: 4px; border: 1.5px solid transparent; transition: transform .15s, background-color .15s, border-color .15s; }
+.btn:hover { transform: translateY(-1px); }
+.btn:focus-visible, .nav a:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; }
+.btn-primary { background: var(--signal); color: var(--on-signal); }
+.btn-ghost { border-color: var(--line); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn .sq { width: 8px; height: 8px; background: currentColor; flex: none; }
+
+/* Cabeçalho */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--paper); }
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: color-mix(in srgb, var(--paper) 88%, transparent); backdrop-filter: saturate(1.4) blur(10px); border-bottom: 1px solid var(--line); }
+.top .inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: 68px; }
+.brand { display: flex; color: var(--ink); }
+.brand svg { height: 22px; width: auto; display: block; }
+.logo-sym { stroke: var(--cobalt); }
+.nav { display: flex; align-items: center; gap: 28px; }
+.nav a { text-decoration: none; font-size: 15px; color: var(--muted); }
+.nav a:hover { color: var(--ink); }
+.nav .btn { padding: 9px 16px; font-size: 14px; color: var(--on-signal); }
+@media (max-width: 720px) { .nav a:not(.btn) { display: none; } }
+
+/* Abertura */
+.hero { padding-block: clamp(48px, 8vw, 104px) clamp(56px, 8vw, 96px); border-bottom: 1px solid var(--line); }
+.hero .inner { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+@media (max-width: 900px) { .hero .inner { grid-template-columns: 1fr; } }
+.hero-copy { display: grid; gap: 24px; min-width: 0; }
+.hero h1 { font-size: clamp(46px, 7.4vw, 92px); line-height: 0.98; letter-spacing: -0.045em; font-weight: 700; }
+.hero h1 span { display: block; font-weight: 300; color: var(--cobalt); }
+.hero-copy > p { font-size: clamp(18px, 1.6vw, 20px); color: var(--muted); max-width: 34ch; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-tags { display: flex; flex-wrap: wrap; gap: 8px 22px; font-family: var(--f-mono); font-size: 14px; color: var(--muted); padding-top: 8px; }
+.hero-tags span::before { content: ""; display: inline-block; width: 7px; height: 7px; background: var(--cobalt); margin-right: 9px; vertical-align: 1px; }
+
+.hero-art { min-width: 0; }
+.hero-art svg { width: 100%; height: auto; display: block; overflow: visible; }
+.g-line { stroke: var(--grid); }
+.g-ghost { stroke: var(--line); }
+.g-draw { stroke: var(--cobalt); stroke-dasharray: 1; stroke-dashoffset: 0; animation: draw 2.2s cubic-bezier(.6,.05,.25,1) .2s both; }
+.g-bit { fill: var(--signal); animation: pop .5s ease-out 2.2s both; transform-box: fill-box; transform-origin: center; }
+.g-label { font-family: var(--f-mono); font-size: 3.4px; fill: var(--muted); }
+@keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes pop { from { transform: scale(0); } 70% { transform: scale(1.4); } to { transform: scale(1); } }
+
+/* Serviços */
+.services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+@media (max-width: 900px) { .services { grid-template-columns: 1fr; } }
+.svc { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 28px; display: grid; gap: 16px; align-content: start; min-width: 0; }
+.svc svg { width: 48px; height: 48px; color: var(--cobalt); }
+.svc h3 { font-size: 24px; }
+.svc p { color: var(--muted); }
+.svc ul { list-style: none; margin: 4px 0 0; padding: 16px 0 0; border-top: 1px solid var(--line); display: grid; gap: 8px; font-size: 15px; }
+.svc li { display: flex; gap: 10px; align-items: baseline; }
+.svc li::before { content: ""; width: 6px; height: 6px; background: var(--cobalt); flex: none; transform: translateY(-2px); }
+
+/* Método */
+.method { background: var(--surface); border-block: 1px solid var(--line); }
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; counter-reset: step; }
+@media (max-width: 900px) { .steps { grid-template-columns: 1fr; } }
+.step { padding: 28px 28px 8px 0; display: grid; gap: 12px; align-content: start; border-top: 2px solid var(--line); position: relative; min-width: 0; }
+.step::before { content: ""; position: absolute; top: -6px; left: 0; width: 10px; height: 10px; background: var(--cobalt); }
+.step:last-child::before { width: 22px; height: 10px; background: none; border: 2.5px solid var(--cobalt); border-radius: 3px; top: -6px; }
+.step .n { font-family: var(--f-mono); font-size: 13px; color: var(--muted); }
+.step h3 { font-size: 24px; }
+.step p { color: var(--muted); max-width: 36ch; }
+.steps-note { margin-top: 40px; font-family: var(--f-mono); font-size: 14px; color: var(--muted); }
+
+/* Nome */
+.name .inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+@media (max-width: 900px) { .name .inner { grid-template-columns: 1fr; } }
+.defs { display: grid; gap: 0; margin: 0; }
+.defs div { display: grid; gap: 4px; padding: 22px 0; border-top: 1px solid var(--line); }
+.defs dt { font-family: var(--f-display); font-size: clamp(30px, 4vw, 44px); letter-spacing: -0.04em; line-height: 1; }
+.defs dt.b { font-weight: 700; }
+.defs dt.i { font-weight: 300; color: var(--cobalt); }
+.defs dd { margin: 0; color: var(--muted); }
+.defs .pron { font-family: var(--f-mono); font-size: 13px; color: var(--muted); }
+.name-copy { display: grid; gap: 20px; }
+.name-copy h2 { font-size: clamp(30px, 4.2vw, 46px); line-height: 1.1; }
+.name-copy p { color: var(--muted); font-size: 18px; max-width: 46ch; }
+.name-copy svg { width: 120px; height: auto; color: var(--cobalt); }
+
+/* Contato */
+.contact { background: var(--band); color: var(--on-band); }
+.contact .inner { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 40px; align-items: end; }
+@media (max-width: 900px) { .contact .inner { grid-template-columns: 1fr; } }
+.contact h2 { font-size: clamp(34px, 5vw, 60px); line-height: 1.02; letter-spacing: -0.04em; }
+.contact p { font-size: 18px; opacity: .85; max-width: 40ch; margin-top: 16px; }
+.contact-box { display: grid; gap: 14px; justify-items: start; }
+.contact-box .mail { font-family: var(--f-mono); font-size: clamp(16px, 2vw, 20px); user-select: all; overflow-wrap: anywhere; }
+.contact .btn-primary:focus-visible { outline-color: var(--on-band); }
+
+/* Rodapé */
+.foot { padding-block: 40px; }
+.foot .inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; color: var(--muted); }
+.foot-brand { display: flex; align-items: center; gap: 12px; }
+.foot-brand svg { width: 34px; height: auto; color: var(--cobalt); }
+.foot nav { display: flex; gap: 20px; }
+.foot a { text-decoration: none; }
+.foot a:hover { color: var(--ink); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .g-draw, .g-bit { animation: none; }
+  .btn { transition: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="inner">
+    <a class="brand" href="#inicio" aria-label="bitinfinitus, início"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 660.74 76.85" aria-hidden="true" focusable="false"><path d="M8 8 V56 Q8 64 16 64 H40 L72 32 H96 Q104 32 104 40 V56 Q104 64 96 64 H72 L40 32 H16 Q8 32 8 40" transform="translate(-3.493 -3.493) scale(1.16439)" fill="none" class="logo-sym" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/><g transform="translate(146.176 76.850) scale(0.10000)"><path d="M410 18Q342.5 18.0 291.75 -10.25Q241.0 -38.5 212.125 -92.875Q183.25 -147.25 181.0 -225.25H199.5V0.0H72.5V-730.0H233V-359.25L194.5 -311.0Q197.75 -393.5 226.5 -450.0Q255.25 -506.5 305.0 -535.25Q354.75 -564.0 418.75 -564.0Q475 -564 520.5 -543.25Q566.0 -522.5 598.125 -485.0Q630.25 -447.5 647.5 -396.875Q664.75 -346.25 664.75 -286.25V-263.75Q664.75 -203.75 647.375 -152.625Q630.0 -101.5 596.5 -63.0Q563.0 -24.5 516.0 -3.25Q469 18 410 18ZM368.25 -115.5Q408.75 -115.5 439.375 -135.875Q470.0 -156.25 487.125 -192.375Q504.25 -228.5 504.25 -275.0Q504.25 -322.25 487.0 -357.125Q469.75 -392.0 439.5 -411.25Q409.25 -430.5 368.25 -430.5Q331.5 -430.5 299.875 -413.875Q268.25 -397.25 248.625 -365.375Q229.0 -333.5 229.0 -288.5V-251.5Q229.0 -208.5 249.5 -178.125Q270.0 -147.75 302.0 -131.625Q334.0 -115.5 368.25 -115.5ZM766.5 0.0V-547.5H927.0V0ZM693.5 -429.5V-547.5H927.0V-429.5ZM829.125 -602.0Q784.0 -602 762.5 -625.375Q741.0 -648.75 741.0 -685.25Q741.0 -721.75 762.5892857142858 -745.125Q784.1785714285714 -768.5 828.75 -768.5Q874.25 -768.5 895.375 -745.125Q916.5 -721.75 916.5 -685.25Q916.5 -648.75 895.375 -625.375Q874.25 -602.0 829.125 -602.0ZM1288.75 7.5Q1206.25 7.5 1155.25 -13.25Q1104.25 -34.0 1080.375 -82.625Q1056.5 -131.25 1056.5 -214.25L1057.25 -696.0H1206.25L1205.5 -207.5Q1205.5 -169.0 1226.0 -148.5Q1246.5 -128.0 1285.0 -128H1365.5V7.5ZM973.5 -430.5V-547.5H1365.5V-430.5Z" fill="currentColor"/><path d="M1490.666259765625 0.0V-529.3336181640625H1565.334228515625V0.0ZM1405.999755859375 -468.666015625V-529.3336181640625H1565.334228515625V-468.666015625ZM1506.6669311523438 -627.3328857421875Q1479.9999389648438 -627.3328857421875 1466.6664733886719 -641.6663818359375Q1453.3330078125 -655.9998779296875 1453.3330078125 -678.170654296875Q1453.3330078125 -700.3414306640625 1466.6664733886719 -714.8377075195312Q1479.9999389648438 -729.333984375 1506.8335876464844 -729.333984375Q1533.667236328125 -729.333984375 1546.8340454101562 -714.8377075195312Q1560.0008544921875 -700.3414306640625 1560.0008544921875 -678.170654296875Q1560.0008544921875 -655.9998779296875 1546.8790162101625 -641.6663818359375Q1533.7571779281375 -627.3328857421875 1506.6669311523438 -627.3328857421875ZM1727.3330078125 0.0V-529.3336181640625H1786.6673583984375V-307.33319091796875H1774.6673583984375Q1774.6673583984375 -381.33349609375 1796.6673278808594 -434.3335876464844Q1818.6672973632812 -487.33367919921875 1862.8339538574219 -516.0003356933594Q1907.0006103515625 -544.6669921875 1973.6672973632812 -544.6669921875H1977.0006713867188Q2077.000732421875 -544.6669921875 2126.1673583984375 -482.3336181640625Q2175.333984375 -420.000244140625 2175.333984375 -307.33319091796875V0.0H2100.666015625V-323.33343505859375Q2100.666015625 -391.99969482421875 2062.8328552246094 -433.9994201660156Q2024.9996948242188 -475.9991455078125 1956.6668090820312 -475.9991455078125Q1886.667236328125 -475.9991455078125 1844.3341064453125 -432.66607666015625Q1802.0009765625 -389.3330078125 1802.0009765625 -318.00006103515625V0.0ZM2341.9996337890625 0.0V-569.9994506835938Q2341.9996337890625 -653.3331298828125 2385.166534423828 -692.9999389648438Q2428.3334350585938 -732.666748046875 2514.0004272460938 -732.666748046875H2581.3336791992188V-669.3323974609375H2500.0003051757812Q2458.3339233398438 -669.3323974609375 2436.1673889160156 -646.9991760253906Q2414.0008544921875 -624.6659545898438 2414.0008544921875 -584.6661987304688V0.0ZM2264.66650390625 -467.3326416015625V-524.6668701171875H2592.0003051757812V-467.3326416015625ZM2694.666259765625 0.0V-529.3336181640625H2769.334228515625V0.0ZM2609.999755859375 -468.666015625V-529.3336181640625H2769.334228515625V-468.666015625ZM2710.6669311523438 -627.3328857421875Q2683.9999389648438 -627.3328857421875 2670.666473388672 -641.6663818359375Q2657.3330078125 -655.9998779296875 2657.3330078125 -678.170654296875Q2657.3330078125 -700.3414306640625 2670.666473388672 -714.8377075195312Q2683.9999389648438 -729.333984375 2710.8335876464844 -729.333984375Q2737.667236328125 -729.333984375 2750.8340454101562 -714.8377075195312Q2764.0008544921875 -700.3414306640625 2764.0008544921875 -678.170654296875Q2764.0008544921875 -655.9998779296875 2750.8790162101623 -641.6663818359375Q2737.7571779281375 -627.3328857421875 2710.6669311523438 -627.3328857421875ZM2931.3330078125 0.0V-529.3336181640625H2990.6673583984375V-307.33319091796875H2978.6673583984375Q2978.6673583984375 -381.33349609375 3000.6673278808594 -434.3335876464844Q3022.6672973632812 -487.33367919921875 3066.833953857422 -516.0003356933594Q3111.0006103515625 -544.6669921875 3177.6672973632812 -544.6669921875H3181.0006713867188Q3281.000732421875 -544.6669921875 3330.1673583984375 -482.3336181640625Q3379.333984375 -420.000244140625 3379.333984375 -307.33319091796875V0.0H3304.666015625V-323.33343505859375Q3304.666015625 -391.99969482421875 3266.8328552246094 -433.9994201660156Q3228.9996948242188 -475.9991455078125 3160.6668090820312 -475.9991455078125Q3090.667236328125 -475.9991455078125 3048.3341064453125 -432.66607666015625Q3006.0009765625 -389.3330078125 3006.0009765625 -318.00006103515625V0.0ZM3558.666259765625 0.0V-529.3336181640625H3633.334228515625V0.0ZM3473.999755859375 -468.666015625V-529.3336181640625H3633.334228515625V-468.666015625ZM3574.6669311523438 -627.3328857421875Q3547.9999389648438 -627.3328857421875 3534.666473388672 -641.6663818359375Q3521.3330078125 -655.9998779296875 3521.3330078125 -678.170654296875Q3521.3330078125 -700.3414306640625 3534.666473388672 -714.8377075195312Q3547.9999389648438 -729.333984375 3574.8335876464844 -729.333984375Q3601.667236328125 -729.333984375 3614.8340454101562 -714.8377075195312Q3628.0008544921875 -700.3414306640625 3628.0008544921875 -678.170654296875Q3628.0008544921875 -655.9998779296875 3614.8790162101623 -641.6663818359375Q3601.7571779281375 -627.3328857421875 3574.6669311523438 -627.3328857421875ZM3987.0006713867188 5.66668701171875Q3932.3336791992188 5.66668701171875 3892.1668090820312 -10.166717529296875Q3851.9999389648438 -26.0001220703125 3830.16650390625 -64.33364868164062Q3808.3330688476562 -102.66717529296875 3808.3330688476562 -167.66754150390625V-696.0H3880.3342895507812V-157.00079345703125Q3880.3342895507812 -111.33428955078125 3905.334197998047 -86.50103759765625Q3930.3341064453125 -61.66778564453125 3975.6672973632812 -61.66778564453125H4071.3338623046875V5.66668701171875ZM3712.6666259765625 -471.9993896484375V-529.3336181640625H4071.3338623046875V-471.9993896484375ZM4363.66650390625 15.3333740234375Q4268.66650390625 15.3333740234375 4218.666442871094 -46.166656494140625Q4168.6663818359375 -107.66668701171875 4168.6663818359375 -218.00042724609375V-530.0003051757812H4243.3343505859375V-202.6668701171875Q4243.3343505859375 -134.3338623046875 4279.667541503906 -93.83416748046875Q4316.000732421875 -53.33447265625 4381.3336181640625 -53.33447265625Q4448.66650390625 -53.33447265625 4489.3330078125 -96.16754150390625Q4529.99951171875 -139.0006103515625 4529.99951171875 -210.6669921875V-530.0003051757812H4604.66748046875V0.0H4545.3331298828125V-220.66717529296875H4557.3331298828125Q4557.3331298828125 -147.33349609375 4536.166473388672 -94.50006103515625Q4514.999816894531 -41.6666259765625 4473.16650390625 -13.1666259765625Q4431.333190917969 15.3333740234375 4366.9998779296875 15.3333740234375ZM4932.6668701171875 15.3333740234375Q4831.0 15.3333740234375 4775.999847412109 -29.499969482421875Q4720.999694824219 -74.33331298828125 4719.666320800781 -148.6668701171875H4790.334167480469Q4791.667541503906 -110.66729736328125 4824.1673583984375 -80.00082397460938Q4856.667175292969 -49.3343505859375 4932.6668701171875 -49.3343505859375Q5003.999755859375 -49.3343505859375 5039.499664306641 -78.8341064453125Q5074.999572753906 -108.3338623046875 5074.999572753906 -150.000244140625Q5074.999572753906 -188.9998779296875 5045.66650390625 -210.33303833007812Q5016.333435058594 -231.66619873046875 4960.0001220703125 -237.66619873046875L4900.000244140625 -243.99951171875Q4827.666687011719 -251.99951171875 4783.3331298828125 -288.3329162597656Q4738.999572753906 -324.66632080078125 4738.999572753906 -388.66656494140625Q4738.999572753906 -435.66680908203125 4762.999694824219 -470.83355712890625Q4786.999816894531 -506.00030517578125 4830.6666259765625 -525.6669616699219Q4874.333435058594 -545.3336181640625 4932.6668701171875 -545.3336181640625Q5018.333801269531 -545.3336181640625 5071.667297363281 -505.3336181640625Q5125.000793457031 -465.3336181640625 5126.334167480469 -391.33331298828125H5055.666320800781Q5055.332946777344 -428.9996337890625 5023.999786376953 -454.832763671875Q4992.6666259765625 -480.6658935546875 4932.6668701171875 -480.6658935546875Q4871.000549316406 -480.6658935546875 4840.333984375 -453.6661376953125Q4809.667419433594 -426.6663818359375 4809.667419433594 -387.99993896484375Q4809.667419433594 -355.33343505859375 4832.667266845703 -333.8336486816406Q4855.6671142578125 -312.3338623046875 4905.000305175781 -307.00054931640625L4965.000183105469 -300.667236328125Q5045.000549316406 -292.3338623046875 5095.333984375 -255.1671142578125Q5145.667419433594 -218.0003662109375 5145.667419433594 -149.3336181640625Q5145.667419433594 -102.0001220703125 5119.167297363281 -64.66671752929688Q5092.667175292969 -27.33331298828125 5045.0003662109375 -5.999969482421875Q4997.333557128906 15.3333740234375 4932.6668701171875 15.3333740234375Z" fill="currentColor"/></g></svg>
+</a>
+    <nav class="nav" aria-label="Principal">
+      <a href="#servicos">Serviços</a>
+      <a href="#como-trabalhamos">Como trabalhamos</a>
+      <a href="#nome">O nome</a>
+      <a class="btn btn-primary" href="#contato">Fale com a gente</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+
+  <section class="hero">
+    <div class="inner">
+      <div class="hero-copy">
+        <span class="eyebrow">Desenvolvimento de software</span>
+        <h1>Do bit <span>ao infinito.</span></h1>
+        <p>Criamos sistemas web, apps e APIs sob medida. Começamos simples, entregamos cedo e fazemos o software crescer junto com o seu negócio.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contato"><span class="sq"></span>Começar um projeto</a>
+          <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
+        </div>
+        <div class="hero-tags"><span>Sistemas web</span><span>Apps</span><span>APIs</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="-8 -12 128 96">
+          <g class="g-line" stroke-width="0.35">
+            <path d="M0 0V72M8 0V72M16 0V72M24 0V72M32 0V72M40 0V72M48 0V72M56 0V72M64 0V72M72 0V72M80 0V72M88 0V72M96 0V72M104 0V72M112 0V72"/>
+            <path d="M0 0H112M0 8H112M0 16H112M0 24H112M0 32H112M0 40H112M0 48H112M0 56H112M0 64H112M0 72H112"/>
+          </g>
+          <path class="g-ghost" d="M8 8 V56 Q8 64 16 64 H40 L72 32 H96 Q104 32 104 40 V56 Q104 64 96 64 H72 L40 32 H16 Q8 32 8 40" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="g-draw" pathLength="1" d="M8 8 V56 Q8 64 16 64 H40 L72 32 H96 Q104 32 104 40 V56 Q104 64 96 64 H72 L40 32 H16 Q8 32 8 40" fill="none" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect class="g-bit" x="54" y="46" width="4" height="4"/>
+          <text class="g-label" x="0" y="-5">grade 8 · 45° · traço contínuo</text>
+          <text class="g-label" x="76" y="80">do bit ao infinito</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos">
+    <div class="inner">
+      <div class="sec-head">
+        <span class="eyebrow">Serviços</span>
+        <h2>Software sob medida, do primeiro bit em diante.</h2>
+        <p>Três frentes que se completam. Um projeto pode começar em qualquer uma delas e crescer para as outras.</p>
+      </div>
+      <div class="services">
+        <article class="svc">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 10 H40 Q44 10 44 14 V34 Q44 38 40 38 H8 Q4 38 4 34 V14 Q4 10 8 10 Z M4 18 H44 M10 14 H11 M15 14 H16"/><path d="M14 28 L18 24 L22 28 M26 30 H34"/></svg>
+          <h3>Sistemas web</h3>
+          <p>Plataformas, painéis e sistemas internos que rodam no navegador, em qualquer computador, sem instalar nada.</p>
+          <ul><li>Portais para clientes</li><li>Painéis e relatórios</li><li>Automação de processos internos</li></ul>
+        </article>
+        <article class="svc">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 4 H31 Q35 4 35 8 V40 Q35 44 31 44 H17 Q13 44 13 40 V8 Q13 4 17 4 Z M21 38 H27"/><path d="M19 16 H29 M19 22 H29 M19 28 H24"/></svg>
+          <h3>Apps</h3>
+          <p>Aplicativos para Android e iOS, para os seus clientes ou para a sua equipe em campo.</p>
+          <ul><li>Apps para clientes</li><li>Apps internos para equipes</li><li>Integração com câmera, mapas e pagamentos</li></ul>
+        </article>
+        <article class="svc">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 16 H16 Q20 16 20 20 V28 Q20 32 16 32 H8 Q4 32 4 28 V20 Q4 16 8 16 Z M32 16 H40 Q44 16 44 20 V28 Q44 32 40 32 H32 Q28 32 28 28 V20 Q28 16 32 16 Z"/><path d="M20 24 H28"/></svg>
+          <h3>APIs</h3>
+          <p>Serviços que conectam os seus sistemas, trocam dados com parceiros e servem de base para a web e os apps.</p>
+          <ul><li>Integração com ERPs e meios de pagamento</li><li>APIs para parceiros</li><li>Documentação e monitoramento</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="como-trabalhamos" class="method">
+    <div class="inner">
+      <div class="sec-head">
+        <span class="eyebrow">Como trabalhamos</span>
+        <h2>Todo sistema começa pequeno.</h2>
+        <p>O que separa um bom software de um problema futuro é ter sido construído para crescer. Por isso o trabalho segue três etapas, e a última se repete.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <span class="n">01</span>
+          <h3>Começar simples</h3>
+          <p>Entendemos o problema principal e definimos a menor versão que já resolve. Sem meses de projeto antes da primeira entrega.</p>
+        </div>
+        <div class="step">
+          <span class="n">02</span>
+          <h3>Entregar cedo</h3>
+          <p>Você vê o software funcionando desde as primeiras semanas e usa de verdade, não só numa apresentação.</p>
+        </div>
+        <div class="step">
+          <span class="n">03 · e de novo</span>
+          <h3>Evoluir em ciclos</h3>
+          <p>A cada ciclo curto, medimos, ajustamos e acrescentamos. O sistema cresce com o negócio sem ser reescrito do zero.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="nome" class="name">
+    <div class="inner">
+      <div class="name-copy">
+        <span class="eyebrow">O nome</span>
+        <h2>O menor e o ilimitado no mesmo nome.</h2>
+        <p>O símbolo é um "b" que não termina. A haste desce, dobra em ângulo reto e fecha o infinito num traço contínuo. Só retas e diagonais de 45°, como uma trilha de circuito: a linguagem de quem constrói com precisão.</p>
+        <svg viewBox="0 0 112 72" aria-hidden="true" focusable="false"><path d="M8 8 V56 Q8 64 16 64 H40 L72 32 H96 Q104 32 104 40 V56 Q104 64 96 64 H72 L40 32 H16 Q8 32 8 40" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <dl class="defs">
+        <div><dt class="b">bit</dt><dd><span class="pron">substantivo · computação</span><br>A menor unidade de informação: um 0 ou um 1. O ponto de partida de todo software.</dd></div>
+        <div><dt class="i">infinitus</dt><dd><span class="pron">adjetivo · latim</span><br>Sem fim, sem limite. A mesma raiz da palavra infinito.</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section id="contato" class="contact">
+    <div class="inner">
+      <div>
+        <h2>Tem um projeto em mente?</h2>
+        <p>Conte o que você precisa construir. Respondemos com os próximos passos.</p>
+      </div>
+      <div class="contact-box">
+        <a class="btn btn-primary" href="mailto:bitinfinitus@maxmirage.com"><span class="sq"></span>Fale com a gente</a>
+        <span class="mail">bitinfinitus@maxmirage.com</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="inner">
+    <div class="foot-brand"><svg viewBox="0 0 112 72" aria-hidden="true" focusable="false"><path d="M8 8 V56 Q8 64 16 64 H40 L72 32 H96 Q104 32 104 40 V56 Q104 64 96 64 H72 L40 32 H16 Q8 32 8 40" fill="none" stroke="currentColor" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg><span>bitinfinitus · Desenvolvimento de software · 2026</span></div>
+    <nav aria-label="Rodapé">
+      <a href="https://github.com/bitinfinitus">GitHub</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</footer>
+
+</body>
+</html>
